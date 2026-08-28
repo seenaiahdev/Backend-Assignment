@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Project Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>📁 Project Manager</h1>
+      <div id="userBox" class="user-box hidden">
+        <span id="userGreeting"></span>
+        <button id="logoutBtn" class="btn btn-ghost">Logout</button>
+      </div>
+    </header>
+
+    <!-- Toast / alert message -->
+    <div id="toast" class="toast hidden"></div>
+
+    <main class="container">
+      <!-- ============ AUTH VIEW ============ -->
+      <section id="authView" class="auth-view">
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Login</button>
+          <button class="tab" data-tab="register">Register</button>
+        </div>
+
+        <!-- Login form -->
+        <form id="loginForm" class="card form">
+          <h2>Welcome back</h2>
+          <label>Email
+            <input type="email" name="email" required placeholder="ravi@example.com" />
+          </label>
+          <label>Password
+            <input type="password" name="password" required placeholder="••••••••" />
+          </label>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+        <!-- Register form -->
+        <form id="registerForm" class="card form hidden">
+          <h2>Create an account</h2>
+          <label>Name
+            <input type="text" name="name" required placeholder="Ravi" />
+          </label>
+          <label>Email
+            <input type="email" name="email" required placeholder="ravi@example.com" />
+          </label>
+          <label>Password
+            <input type="password" name="password" required minlength="6" placeholder="At least 6 characters" />
+          </label>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+      </section>
+
+      <!-- ============ DASHBOARD VIEW ============ -->
+      <section id="dashView" class="dash-view hidden">
+        <div class="dash-header">
+          <h2>My Projects</h2>
+          <button id="newProjectBtn" class="btn btn-primary">+ New Project</button>
+        </div>
+
+        <div id="projectList" class="project-list"></div>
+        <p id="emptyState" class="empty-state hidden">
+          No projects yet. Click <strong>+ New Project</strong> to add one.
+        </p>
+      </section>
+    </main>
+
+    <!-- ============ PROJECT MODAL ============ -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <h2 id="modalTitle">New Project</h2>
+        <form id="projectForm" class="form">
+          <input type="hidden" name="id" />
+          <label>Title
+            <input type="text" name="title" required placeholder="E-Commerce Backend" />
+          </label>
+          <label>Description
+            <textarea name="description" required rows="3" placeholder="Short description of the project"></textarea>
+          </label>
+          <label>Technologies (comma separated)
+            <input type="text" name="technologies" placeholder="Node.js, Express, MongoDB" />
+          </label>
+          <label>GitHub URL
+            <input type="url" name="githubUrl" placeholder="https://github.com/…" />
+          </label>
+          <label>Deployed URL
+            <input type="url" name="deployedUrl" placeholder="https://…" />
+          </label>
+          <label>Status
+            <select name="status">
+              <option value="Planning">Planning</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </label>
+          <div class="modal-actions">
+            <button type="button" id="cancelModal" class="btn btn-ghost">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
